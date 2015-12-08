@@ -246,12 +246,12 @@ class Dxw_Content_Review
 
             foreach ($emails as $address) {
                 if (!is_email(trim($address))) {
-                    $error = new WP_Error('content-review', 'Invalid email entered');
+                    $error = new \WP_Error('content-review', 'Invalid email entered');
                 }
             }
         } else {
             if (!is_email(trim($email))) {
-                $error = new WP_Error('content-review', 'Invalid email entered');
+                $error = new \WP_Error('content-review', 'Invalid email entered');
             }
         }
 
@@ -269,7 +269,7 @@ class Dxw_Content_Review
         if (array_key_exists($value, $settings)) {
             return $value;
         } else {
-            return new WP_Error('content-review', 'Invalid setting chosen');
+            return new \WP_Error('content-review', 'Invalid setting chosen');
         }
     }
 
