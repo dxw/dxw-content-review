@@ -153,7 +153,10 @@ class Dxw_Content_Review
 
     public static function setup_meta_boxes($post_type)
     {
-        if ($post_type === 'post' || $post_type === 'page') {
+        $post_types = ['post', 'page'];
+        $post_types = apply_filters('dxw_content_review_post_types', $post_types);
+
+        if (in_array($post_type, $post_types, true)) {
             add_meta_box(
                 'dxw-content',
                 'Content Review',
