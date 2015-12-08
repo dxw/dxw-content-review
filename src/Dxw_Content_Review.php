@@ -1,11 +1,14 @@
 <?php
+
+namespace Dxw_Content_Review;
+
 /**
-* Content Review main class.
-*
-* @author    Adam Onishi <adam@dxw.com>
-* @license   GPL2
-* @copyright   2015 dxw
-*/
+ * Content Review main class.
+ *
+ * @author    Adam Onishi <adam@dxw.com>
+ * @license   GPL2
+ * @copyright   2015 dxw
+ */
 class Dxw_Content_Review
 {
     /**
@@ -47,9 +50,9 @@ class Dxw_Content_Review
             'slug' => self::$plugin_slug,
 
             // urls
-            'basename' => plugin_basename(__FILE__),
-            'path' => plugin_dir_path(__FILE__),
-            'dir' => plugin_dir_url(__FILE__),
+            'basename' => plugin_basename(__DIR__),
+            'path' => plugin_dir_path(__DIR__),
+            'dir' => plugin_dir_url(__DIR__),
 
             'dxw_review_length' => array(
                 '0' => 'No review date',
@@ -64,8 +67,6 @@ class Dxw_Content_Review
                 'trash' => 'Email reviewer and send to trash',
             ),
         );
-
-        require_once 'lib/helpers.php';
 
         if (is_admin()) {
             // Add content review meta box
@@ -160,7 +161,7 @@ class Dxw_Content_Review
             add_meta_box(
                 'dxw-content',
                 'Content Review',
-                array('Dxw_Content_Review', 'render_meta_box'),
+                array('\\Dxw_Content_Review\\Dxw_Content_Review', 'render_meta_box'),
                 $post_type,
                 'side',
                 'core'
@@ -172,7 +173,7 @@ class Dxw_Content_Review
     {
         // Get meta box content
         // Use nonce for verification
-        wp_nonce_field(plugin_basename(__FILE__), 'dxw_content_review_nonce');
+        wp_nonce_field(plugin_basename(__DIR__), 'dxw_content_review_nonce');
 
         $args = array();
 
@@ -195,7 +196,7 @@ class Dxw_Content_Review
 
         // verify this came from the screen and with proper authorization,
         // because save_post can be triggered at other times
-        if (!isset($_POST['dxw_content_review_nonce']) || !wp_verify_nonce($_POST['dxw_content_review_nonce'], plugin_basename(__FILE__))) {
+        if (!isset($_POST['dxw_content_review_nonce']) || !wp_verify_nonce($_POST['dxw_content_review_nonce'], plugin_basename(__DIR__))) {
             return $post_id;
         }
 

@@ -22,7 +22,7 @@ function dxw_get_setting($name, $allow_filter = true)
 
     // vars
     $r = null;
-    $arc = Dxw_Content_Review::get_instance();
+    $arc = \Dxw_Content_Review\Dxw_Content_Review::get_instance();
 
     // load from ACF if available
     if (isset($arc->settings[ $name ])) {

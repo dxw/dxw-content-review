@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__.'/../class-content-review.php';
-
 class ContentReviewTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
@@ -20,7 +18,7 @@ class ContentReviewTest extends PHPUnit_Framework_TestCase
             'args' => [
                 'dxw-content',
                 'Content Review',
-                ['Dxw_Content_Review', 'render_meta_box'],
+                ['\\Dxw_Content_Review\\Dxw_Content_Review', 'render_meta_box'],
                 'post',
                 'side',
                 'core',
@@ -28,7 +26,7 @@ class ContentReviewTest extends PHPUnit_Framework_TestCase
             'times' => 1,
         ]);
 
-        Dxw_Content_Review::setup_meta_boxes('post');
+        \Dxw_Content_Review\Dxw_Content_Review::setup_meta_boxes('post');
     }
 
     public function testSetupMetaBoxesPage()
@@ -37,7 +35,7 @@ class ContentReviewTest extends PHPUnit_Framework_TestCase
             'args' => [
                 'dxw-content',
                 'Content Review',
-                ['Dxw_Content_Review', 'render_meta_box'],
+                ['\\Dxw_Content_Review\\Dxw_Content_Review', 'render_meta_box'],
                 'page',
                 'side',
                 'core',
@@ -45,7 +43,7 @@ class ContentReviewTest extends PHPUnit_Framework_TestCase
             'times' => 1,
         ]);
 
-        Dxw_Content_Review::setup_meta_boxes('page');
+        \Dxw_Content_Review\Dxw_Content_Review::setup_meta_boxes('page');
     }
 
     public function testSetupMetaBoxesCustomPostType()
@@ -54,7 +52,7 @@ class ContentReviewTest extends PHPUnit_Framework_TestCase
             'args' => [
                 'dxw-content',
                 'Content Review',
-                ['Dxw_Content_Review', 'render_meta_box'],
+                ['\\Dxw_Content_Review\\Dxw_Content_Review', 'render_meta_box'],
                 'meow',
                 'side',
                 'core',
@@ -66,7 +64,7 @@ class ContentReviewTest extends PHPUnit_Framework_TestCase
         ->with(['post', 'page'])
         ->reply(['meow']);
 
-        Dxw_Content_Review::setup_meta_boxes('meow');
+        \Dxw_Content_Review\Dxw_Content_Review::setup_meta_boxes('meow');
     }
 
     public function testSetupMetaBoxesNotPostOrPage()
@@ -79,7 +77,7 @@ class ContentReviewTest extends PHPUnit_Framework_TestCase
         ->with(['post', 'page'])
         ->reply(['meow']);
 
-        Dxw_Content_Review::setup_meta_boxes('post');
-        Dxw_Content_Review::setup_meta_boxes('page');
+        \Dxw_Content_Review\Dxw_Content_Review::setup_meta_boxes('post');
+        \Dxw_Content_Review\Dxw_Content_Review::setup_meta_boxes('page');
     }
 }
