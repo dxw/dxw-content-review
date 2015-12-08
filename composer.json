@@ -1,0 +1,11 @@
+{
+    "require-dev": {
+        "10up/wp_mock": "dev-master",
+        "phpunit/phpunit": "4.8.*"
+    },
+    "autoload": {
+      "psr-4": {
+        "Dxw_Content_Review\\": "src/"
+      }
+    }
+}
