@@ -10,26 +10,27 @@ Text Domain: dxwreview
 */
 
 // If file is called directly, abort
-if( ! defined( 'WPINC' ) ) {
-  die;
+if (!defined('WPINC')) {
+    die;
 }
 
-if( ! class_exists('Dxw_Content_Review') ) :
+if (!class_exists('Dxw_Content_Review')) :
 
-  // Load the plugin class file
-  require_once( plugin_dir_path( __FILE__ ) . 'class-content-review.php' );
+    // Load the plugin class file
+    require_once plugin_dir_path(__FILE__).'class-content-review.php';
 
-  // Register activation and deactivation hooks
-  register_activation_hook( __FILE__, array('Dxw_Content_Review', 'plugin_activation') );
-  register_deactivation_hook( __FILE__, array('Dxw_Content_Review', 'plugin_deactivation') );
+    // Register activation and deactivation hooks
+    register_activation_hook(__FILE__, array('Dxw_Content_Review', 'plugin_activation'));
+    register_deactivation_hook(__FILE__, array('Dxw_Content_Review', 'plugin_deactivation'));
 
-  // Load the plugin (not sure if this is really needed unless we're running the functionality)
-  add_action( 'plugins_loaded', 'dxw_content_review_init' );
+    // Load the plugin (not sure if this is really needed unless we're running the functionality)
+    add_action('plugins_loaded', 'dxw_content_review_init');
 
-  function dxw_content_review_init() {
-    $content_review = Dxw_Content_Review::get_instance();
+    function dxw_content_review_init()
+    {
+        $content_review = Dxw_Content_Review::get_instance();
 
-    $content_review->initialise();
-  }
+        $content_review->initialise();
+    }
 
 endif;
